@@ -3,7 +3,7 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
 import { getImagesByQuery } from "./js/pixabay-api.js";
-import { form, loader, createGallery, clearGallery, showLoader, hidenLoader } from "./js/render-fuctions.js";
+import { form, loader, createGallery, clearGallery, showLoader, hidenLoader } from "./js/render-functions.js";
 
 const input = form.elements['search-text'];
 const defaultPlaceholder = input.placeholder;
