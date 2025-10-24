@@ -3,8 +3,9 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
 import { getImagesByQuery } from "./js/pixabay-api.js";
-import { form, loader, createGallery, clearGallery, showLoader, hidenLoader } from "./js/render-functions.js";
+import {createGallery, clearGallery, showLoader, hideLoader } from "./js/render-functions.js";
 
+const form = document.querySelector('.form');
 const input = form.elements['search-text'];
 const defaultPlaceholder = input.placeholder;
 form.addEventListener('submit', handleSubmit);
@@ -18,7 +19,7 @@ function handleSubmit(event) {
             title: 'Error',
             message: "Please enter a search query.",
         });
-        hidenLoader();
+        hideLoader();
         return;
     }
     input.placeholder = "";
@@ -44,7 +45,7 @@ function handleSubmit(event) {
             });
         })
         .finally(() => {
-            loader.classList.add('hidden');
+            hideLoader();
             input.value = '';
             input.placeholder = defaultPlaceholder;
         });
