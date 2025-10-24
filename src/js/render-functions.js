@@ -3,9 +3,13 @@ import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
 
-export const form = document.querySelector('.form');
-export const loader = document.querySelector('.loader');
+const form = document.querySelector('.form');
+const loader = document.querySelector('.loader');
 const galleryContainer = document.querySelector('.gallery');
+const lightbox = new SimpleLightbox('.gallery a', {
+        captionsData: 'alt',
+        captionDelay: 250,
+    });
 
 
 export function createGallery(images) {
@@ -24,24 +28,17 @@ export function createGallery(images) {
         </li>
     `).join('');
     galleryContainer.insertAdjacentHTML('beforeend', markup);
-    const lightbox = new SimpleLightbox('.gallery a', {
-        captionsData: 'alt',
-        captionDelay: 250,
-    });
     lightbox.refresh();
 }
 
 export function clearGallery() {
-    galleryContainer.innerHTML = " ";
+    galleryContainer.innerHTML = "";
 }
 
 export function showLoader() {
-    if (document.querySelector('.loader')) {
-        loader.classList.remove('hidden');
-    }
+    loader.classList.remove('hidden');
 }
 
-export function hidenLoader() {
-    if (document.querySelector('.loader'))
+export function hideLoader() {
     loader.classList.add('hidden');
 }
