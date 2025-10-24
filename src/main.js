@@ -14,6 +14,7 @@ function handleSubmit(event) {
     event.preventDefault();
     showLoader();
     const query = form.elements['search-text'].value.trim();
+    clearGallery();
     if (!query) {
         iziToast.error({
             title: 'Error',
@@ -25,7 +26,6 @@ function handleSubmit(event) {
     input.placeholder = "";
     getImagesByQuery(query)
         .then(images => {
-            clearGallery();
             if (!images || images.length === 0) {
                 iziToast.error({
                     title: 'Error',
